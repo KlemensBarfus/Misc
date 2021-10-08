@@ -1,4 +1,4 @@
-def check_if_timeseries_is_complete(date, var, d_time=None, start_date=None, stop_date=None, missing_value=np.nan):
+def check_if_timeseries_is_complete(date, var, d_time=None, start_date=None, stop_date=None, missing_value='NaN'):
   import numpy as np
   import datetime
   # checks if (equidistant) timeseries is complete
@@ -10,6 +10,9 @@ def check_if_timeseries_is_complete(date, var, d_time=None, start_date=None, sto
   # missing value to be inserted, of not provided np.nan 
   # written by KBarfus, 08/10/2021
 
+  if(missing_value == 'NaN'):
+    missing_value = np.nan
+    
   # check which type date and var are
   if(isinstance(date,list)):
     type_date = 'list'
