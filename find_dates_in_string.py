@@ -36,10 +36,16 @@ def find_dates_in_string(string):
       second_temp = 0
       if(len(res[i]) > 8):
         hour_temp = int(res[i][8:10])
+        if(hour_temp > 23):
+          remove_flag = True
       if(len(res[i]) > 10):
         minute_temp = int(res[i][10:12])
+        if(minute_temp > 59):
+          remove_flag = True
       if(len(res[i]) > 12):
         second_temp = int(res[i][12:14])
+        if(second_temp > 59):
+          remove_flag = True
       if(month_temp > 12): # not a month
         remove_flag = True
       else:
