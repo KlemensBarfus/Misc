@@ -52,15 +52,6 @@ def find_dates_in_string(string):
         num_days = monthrange(year_temp, month_temp)[1]     
         if(day_temp > num_days):  # are there climate models with 31 days in each month ?
           remove_flag = True
-        else:
-          if(hour_temp > 23):
-            remove_flag = True
-          else:
-            if(minute_temp > 59):
-              remove_flag = True
-            else:
-              if(second_temp > 59):
-                remove_flag = True
     if(remove_flag == False):
       rec_date = datetime.datetime(year_temp,month_temp,day_temp,hour_temp,minute_temp,second_temp)
       dd.append(rec_date)
