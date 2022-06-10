@@ -2,6 +2,12 @@ def plot_polygon_and_boundaries_on_map(index_lat, index_lon, lat, lon, poly_lat=
   from mpl_toolkits.basemap import Basemap
   from matplotlib.collections import PolyCollection, LineCollection
   import gc
+  # plots a polygon defined by indices for lat (index_lat, list or 1d array) and lon,
+  # the corresponding latitudes (lat, 1D) and longitudes (lon)
+  # if poly_lat (latitutes of the boundaries, 1d, each point only once in list) and poly_lon are provided,
+  # boundaries are also plotted
+  # written by Klemens Barfus, 6/2022
+  
   lat_temp = lat[index_lat]
   lon_temp = lon[index_lon]
   min_lat = lat_temp.min()
