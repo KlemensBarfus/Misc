@@ -1,6 +1,13 @@
 def get_polygon_lat_lon(i, j, lat, lon):
   import numpy as np
-  # i is list with x/lon indices
+  # gets the vertices of the boundary including a polygon (convex or concave) with 4-point-connectivity.
+  # vertices are stored clockwise, start and end point only appear once in the results.
+  # input is
+  # i: list or 1d array of horizontal indices of gridcells of polygon
+  # j: list or 1d array of horizontal indices of gridcells of polygon
+  # lat: latitudes (equal distance) as list or 1d array corresponding to indices
+  # lon: longitudes (equal distance) as list or 1d array corresponding to indices
+  # written by K.Barfus 6/2022
     
   def test_side(rec_i, rec_j, i, j, side):
     # test for indices 'rec_i' and 'rec_j' if the pixel to one side
