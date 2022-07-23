@@ -67,8 +67,8 @@ def get_polygon_lat_lon(i, j, lat, lon):
   lon_poly = []
    # find pixel on the left edge (i == min(i))
   index_min = np.where(i == min(i))
-  rec_i = np.asscalar(i[index_min[0]])
-  rec_j = np.asscalar(j[index_min[0]])
+  rec_i = np.asscalar(i[index_min[0][0]])
+  rec_j = np.asscalar(j[index_min[0][0]])
   # to do: add coordinates to list
   lat_inside = lat[rec_j]
   lon_inside = lon[rec_i]
