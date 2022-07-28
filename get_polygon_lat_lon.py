@@ -95,7 +95,7 @@ def get_polygon_lat_lon(i, j, lat, lon):
       if(found_last == False and found_next == False):
         # test up
         if((rec_i,rec_j+1) in list(zip(i,j))):
-          test = test_side(rec_i-1,rec_j+1,i,j,'L')
+          test = test_side(rec_i,rec_j+1,i,j,'L')
           if(test == True):
             found_next = True
             found_last = add_coordinates(rec_i,rec_j+1,lat,lon,'U')
