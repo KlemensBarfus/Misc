@@ -1,0 +1,2 @@
+gfortran -c interpolation.f90
+f2py --opt='-O3' -c interpolation.f90 -m mod_interpolation
