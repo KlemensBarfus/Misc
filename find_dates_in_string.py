@@ -25,7 +25,7 @@ def find_dates_in_string(string):
   while(tested_all == False):
     remove_flag = False
     length = len(res[i])
-    if(length in allowed_length == False):  # too short or wrong length
+    if(length not in allowed_length):  # too short or wrong length
       remove_flag = True
     else:
       year_temp = int(res[i][0:4])
