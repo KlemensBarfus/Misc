@@ -60,4 +60,7 @@ def find_dates_in_string(string):
         tested_all = True
     else:
       del(res[i])
+      if(i == len(res)):
+        tested_all = True
+        
   return res, dd    
