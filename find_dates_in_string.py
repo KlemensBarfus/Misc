@@ -1,7 +1,7 @@
 def find_dates_in_string(string):
   # E.g. in case of filenames this routine extracts dates as strings as well as datetime objects
-  # dates are in the format YYYYMMDD, YYYYMMDDHH, YYYYMMDDHHMM or YYYYMMDDHHMMSS and so
-  # every string with digits >= 8 is interpreted as a date   
+  # dates are in the format YYYYMM. YYYYMMDD, YYYYMMDDHH, YYYYMMDDHHMM or YYYYMMDDHHMMSS and so
+  # every string with digits >= 6 is interpreted as a date   
   import datetime
   from calendar import monthrange
   #num_days = monthrange(2019, 2)[1] # num_days = 28
@@ -21,7 +21,7 @@ def find_dates_in_string(string):
   # remove short strings        
   i  = 0
   tested_all = False
-  allowed_length = [8,10,12,14]
+  allowed_length = [6,8,10,12,14]
   while(tested_all == False):
     remove_flag = False
     length = len(res[i])
@@ -30,10 +30,14 @@ def find_dates_in_string(string):
     else:
       year_temp = int(res[i][0:4])
       month_temp = int(res[i][4:6])
-      day_temp = int(res[i][6:8])
+      day_temp = 1
       hour_temp = 0
       minute_temp = 0
       second_temp = 0
+      if(len(res[i]) > 6):
+        day_temp = int(res[i][6:8])
+        if(day_temp > 31):
+          remove_flag = True
       if(len(res[i]) > 8):
         hour_temp = int(res[i][8:10])
         if(hour_temp > 23):
