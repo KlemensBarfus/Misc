@@ -1,4 +1,4 @@
-def datestring_to_date(string):
+def datestring_to_datetime(string):
   # gets a datetime date from a string
   # string can be any part of (starting at the beginning) 'yyyymmddhhmmss'
   # everything missing is filled up with ones(mm,dd) and zeros(hhmmss)
