@@ -387,5 +387,4 @@ def dewpoint_from_mixing_ratio_and_pres(mr,p):
     return np.squeeze(dewpoint)
   return dewpoint            
                                          
-end function
 
