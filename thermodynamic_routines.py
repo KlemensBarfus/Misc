@@ -277,7 +277,7 @@ def specific_humidity_from_relative_humidity(T,Pressure,RH):
   q = (RH / 100.0) * qs
   
   if scalar_input:
-    return q
+    return np.squeeze(q)
   return q
   
 def specific_humidity_from_mixing_ratio(r, p):
@@ -303,7 +303,7 @@ def specific_humidity_from_mixing_ratio(r, p):
   q = (epsilon*e)/(p-e*(1.0-epsilon))
 
   if scalar_input:
-    return q
+    return np.squeeze(q)
   return q
 
 def mixing_ratio_from_specific_humidity(q,p):
@@ -329,7 +329,7 @@ def mixing_ratio_from_specific_humidity(q,p):
   r = (epsilon*e)/(p-e)
   
   if scalar_input:
-    return r  
+    return np.squeeze(r)  
   return r
 
 def vapour_pressure_from_specific_humidity(q,p):
@@ -354,5 +354,38 @@ def vapour_pressure_from_specific_humidity(q,p):
   e = (q*p) / (epsilon - q*(1.0 - epsilon))
 
   if scalar_input:
-    return e
-  return e  
+    return np.squeeze(e)
+  return e
+
+def dewpoint_from_mixing_ratio_and_pres(mr,p):
+  # derives dew point temperature from mixing ratio and pressure                                                                                                                                              
+  # equation deruved from Stull: Meteorology for Scientists and Engineers (Eq. 5.3 and 5.7)                                                                                                                   
+  # input is:
+  # mr: mixing ratio [g_water_vapour / g_dry_air]                                                                                                                                           
+  # p:  pressure [hPa]                                                                                                                                                                      
+  # output is dewpoint temperature in [K]
+  import numpy as np
+
+  epsilon = 0.622 #[g/g]                                                                                                                                                                    
+  T0 = 273.15 #[K]                                                                                                                                                                          
+  RvLv = 1.844*10.0**(-4) # [K**-1]                                                                                                                                                         
+  e0 = 0.611 # [kPa]                                                                                                                                                                        
+
+  mr = np.asarray(mr)
+  p = np.asarray(p)
+  
+  scalar_input = False
+  if mr.ndim == 0:
+    mr = mr[None]
+    p = p[None]
+    scalar_input = True
+  
+  vapour_pressure = (mr * p)/(epsilon + mr)
+  dewpoint = (1.0/T0 - RvLv * np.log((vapour_pressure(10.0)/e0))**(-1.0) + T0
+
+  if scalar_input:
+    return np.squeeze(dewpoint)
+  return dewpoint            
+                                         
+end function
+
