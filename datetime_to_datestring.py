@@ -17,13 +17,13 @@ def datetime_to_datestring(dt, fmt=None):
     else:
       if("yyyy" in fmt):
         res = res + rec_year_str
-  if("dd" in fmt):
-    res = res + rec_day_str
-  if("hhmm" in fmt):
-    res = res + rec_hour_str + rec_minute_str
-  else:
-    if("hh" in fmt):
-      res = res + rec_hour_str
-  if("ss" in fmt):
-    res = res + rec_second_str
+      if("dd" in fmt):
+        res = res + rec_day_str
+      if("hhmm" in fmt):
+        res = res + rec_hour_str + rec_minute_str
+      else:
+        if("hh" in fmt):
+          res = res + rec_hour_str
+        if("ss" in fmt):
+          res = res + rec_second_str
   return res  
